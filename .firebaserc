@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "trailway-6b013": {
+      "hosting": {
+        "app": [
+          "trailway-6b013"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "trailway-6b013"
+  }
+}
