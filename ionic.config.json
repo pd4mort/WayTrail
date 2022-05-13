@@ -1,0 +1,7 @@
+{
+  "name": "WayTrail",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
