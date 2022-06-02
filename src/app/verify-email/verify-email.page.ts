@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { async } from '@firebase/util';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 import { User } from '../shared/user.interface';
@@ -13,16 +13,18 @@ export class VerifyEmailPage {
 
   public user$: Observable<User> = this.authSvc.afAuth.user;
 
-  constructor(private authSvc: AuthService) { }
+  constructor(private authSvc: AuthService, private router: Router) { }
 
 
   async onSendEmail(): Promise<void> {
 
     try {
       await this.authSvc.sendVerificationEmail();
+      
     } catch (error) {
       console.log('Error', error);
     }
+    this.router.navigate(['login']);
   }
 
   ngOnDestroy(){

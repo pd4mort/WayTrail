@@ -5,22 +5,39 @@
 </ion-header>
 
 <ion-content>
-  <form>
+  <form class="form" [formGroup]="userForm" (ngSubmit)="onLogin(userForm)">
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" #email required></ion-input>
+      <ion-input type="text" formControlName="email" required></ion-input>
     </ion-item>
+
+    <ng-container *ngFor="let error of error_msg.email">
+      <div
+        *ngIf="userForm.get('email').hasError(error.type) && (userForm.get('email').dirty || userForm.get('email').touched)">
+        {{ error.message }}
+      </div>
+    </ng-container>
 
     <ion-item lines="full">
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" #password required></ion-input>
+      <ion-input type="password" formControlName="password" required></ion-input>
     </ion-item>
+
+    <ng-container *ngFor="let error of error_msg.password">
+      <div
+        *ngIf="userForm.get('password').hasError(error.type) && (userForm.get('password').dirty || userForm.get('password').touched)">
+        {{ error.message }}
+      </div>
+    </ng-container>
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" (click)="onLogin(email, password)" expand="block">Entrar</ion-button>
+        <ion-button type="submit" [disabled]="!userForm.valid" expand="block">Entrar</ion-button>
       </ion-col>
     </ion-row>
+
+    <label class="ion-text-center" color="danger">{{errorMsg}}</label>
+    <label class="ion-text-center" color="success">{{successMsg}}</label>
 
     <ion-row>
       <ion-col>
