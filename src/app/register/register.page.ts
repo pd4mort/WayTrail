@@ -87,7 +87,7 @@ export class RegisterPage implements OnInit {
 
     if (isVerified) {
 
-      this.router.navigate(['admin']);
+      this.router.navigate(['pral']);
 
     }
     else {
