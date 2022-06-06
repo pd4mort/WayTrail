@@ -1,0 +1,27 @@
+[
+    {
+        "icon": "home",
+        "name": "Home",
+        "redirectTo": "/admin"
+    },
+    {
+        "icon": "person",
+        "name": "Perfil",
+        "redirectTo": "/profile"
+    },
+    {
+        "icon": "search",
+        "name": "Búsqueda",
+        "redirectTo": "/search"
+    },
+    {
+        "icon": "map",
+        "name": "Mapa",
+        "redirectTo": "/maps"
+    },
+    {
+        "icon": "star",
+        "name": "Favoritos",
+        "redirectTo": "/favourite"
+    }
+]

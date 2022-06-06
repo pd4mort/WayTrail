@@ -18,6 +18,10 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ComponentsModule } from './components/components.module';
+import { DataService } from './service/data.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -25,7 +29,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), provideAnalytics(() => getAnalytics()), provideAuth(() => getAuth()), provideDatabase(() => getDatabase()), provideFirestore(() => getFirestore()), provideFunctions(() => getFunctions()), provideMessaging(() => getMessaging()), providePerformance(() => getPerformance()), provideStorage(() => getStorage()),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
+    AngularFireAuthModule, ComponentsModule, HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ScreenTrackingService,UserTrackingService],
   bootstrap: [AppComponent],
