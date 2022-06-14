@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PralPageRoutingModule } from './pral-routing.module';
+import { PralPageRoutingModule } from './logout-routing.module';
 
-import { PralPage } from './pral.page';
+import { PralPage } from './logout.page';
 
 @NgModule({
   imports: [

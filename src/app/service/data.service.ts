@@ -1,6 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
-import { Componente } from "../interfaces/interfaces";
+import { Componente, Trail } from "../interfaces/interfaces";
+import { environment } from "src/environments/environment";
+import { Observable } from "rxjs";
+import { collection, getFirestore } from "firebase/firestore";
+import { collectionData } from "@angular/fire/firestore";
+import { map } from "rxjs/operators";
 
 
 @Injectable({ 
@@ -9,7 +14,10 @@ import { Componente } from "../interfaces/interfaces";
 
 export class DataService {
 
-    constructor( private http: HttpClient) { }
+    constructor( 
+        private http: HttpClient,
+        //private firestore: Firestore
+        ) { }
 
     getMenuOpts() {
        
@@ -18,23 +26,11 @@ export class DataService {
     }
     
     getTrail() {
-       
-       let x =  this.http.get<any>('https://trailapi-trailapi.p.rapidapi.com/activity/?lat=37.76129576308755&limit=25&lon=-3.948276326441903&q-state_cont=Ja%C3%A9n&radius=25&q-activities_activity_type_name_eq=hiking')
-        console.log(x)
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '671ae8bbcbmshc9ad5e65160b4d2p15497bjsn7e0d1d2e7460',
-                'X-RapidAPI-Host': 'trailapi-trailapi.p.rapidapi.com'
-            }
-        };
-        
-        fetch('https://trailapi-trailapi.p.rapidapi.com/activity/?lat=37.76129576308755&limit=25&lon=-3.948276326441903&q-state_cont=Ja%C3%A9n&radius=25&q-activities_activity_type_name_eq=hiking', options)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .catch(err => console.error(err));
 
-        return x;
+        const routesCollection = collection(getFirestore(), 'routes');
+        console.log(routesCollection.id)
+        return collectionData(routesCollection)
+        
     }
 
 

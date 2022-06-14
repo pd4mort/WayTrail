@@ -19,24 +19,32 @@ export class MapsPage implements OnInit {
 
   menuOpts: Observable<Componente[]>;
   printCurrentPosition: Position;
+
+  //DirectionServices
+ 
+  
+
+
   constructor(
     private menuCtrol: MenuController,
     private dataService: DataService,
+    
   ) { }
 
   ngOnInit() {
     this.menuOpts = this.dataService.getMenuOpts();
+    this.getCurrentLocation();
     this.ionViewDidEnter()
     
   }
 
   ionViewDidEnter(){
-    this.getCurrentLocation();
+    
     this.createMap();
   }
 
   async createMap(){
-
+    
 
     const mapRef = document.getElementById('map');
     
@@ -53,8 +61,8 @@ export class MapsPage implements OnInit {
         zoom: 8, // The initial zoom level to be rendered by the map
       },
     });
-
-    
+   
+    this.getDirection();
     
   }
 
@@ -70,20 +78,13 @@ export class MapsPage implements OnInit {
 
   }
 
-  showCurrentPosition() {
+  async getDirection(){
 
-    Geolocation.requestPermissions().then(async permissions => {
-      const coordinates = await Geolocation.getCurrentPosition();
-
-      CapacitorGoogleMaps.addMarker({
-        latitude: coordinates.coords.latitude,
-        longitude: coordinates.coords.longitude,
-      });
-
-    })
-
+    
+    
+    
   }
-
+  
   menu() {
 
     this.menuCtrol.toggle();
