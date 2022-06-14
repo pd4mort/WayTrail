@@ -13,13 +13,23 @@ export class SearchPage implements OnInit {
 
   menuOpts: Observable<Componente[]>;
 
+  trails: any [] = [];
+  searchText = '';
+  
   constructor(
     private menuCtrol: MenuController,
     private dataService: DataService
   ) { }
 
   ngOnInit() {
+
     this.menuOpts = this.dataService.getMenuOpts();
+
+    this.dataService.getTrail()
+      .subscribe( trails => {
+       
+        this.trails = trails;
+      } );
   }
 
   menu() {
@@ -28,5 +38,10 @@ export class SearchPage implements OnInit {
 
   }
 
+  onSearch(event){ 
+
+    this.searchText = event.detail.value;
+    console.log(event)
+  }
 
 }
