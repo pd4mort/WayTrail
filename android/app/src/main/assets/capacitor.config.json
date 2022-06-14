@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "WayTrail",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

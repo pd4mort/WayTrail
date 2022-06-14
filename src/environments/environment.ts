@@ -14,7 +14,8 @@ export const environment = {
     storageBucket: "trailway-6b013.appspot.com",
     messagingSenderId: "311974001180",
     appId: "1:311974001180:web:826e2f9cc54723ab0b7dd9",
-    measurementId: "G-9YZYQHCPLZ"
+    measurementId: "G-9YZYQHCPLZ",
+    mapKey: 'AIzaSyB9fW-v1IJPbQ0-OCiKsp_oisdaFKkcmTw'
   },
 };
 

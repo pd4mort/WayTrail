@@ -19,19 +19,27 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ComponentsModule } from './components/components.module';
-import { DataService } from './service/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PipesModule } from './pipes/pipes.module';
+
 
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), provideAnalytics(() => getAnalytics()), provideAuth(() => getAuth()), provideDatabase(() => getDatabase()), provideFirestore(() => getFirestore()), provideFunctions(() => getFunctions()), provideMessaging(() => getMessaging()), providePerformance(() => getPerformance()), provideStorage(() => getStorage()),
+  imports: [BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), provideAnalytics(() => getAnalytics()), provideAuth(() => getAuth()), provideDatabase(() => getDatabase()), provideFirestore(() => getFirestore()), provideFunctions(() => getFunctions()), provideMessaging(() => getMessaging()), providePerformance(() => getPerformance()), provideStorage(() => getStorage()),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule, ComponentsModule, HttpClientModule
+    AngularFireAuthModule, 
+    ComponentsModule, 
+    HttpClientModule,
+    PipesModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ScreenTrackingService,UserTrackingService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, 
+    ScreenTrackingService,
+    UserTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

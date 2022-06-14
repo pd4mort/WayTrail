@@ -1,14 +1,27 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-button>
       <ion-button (click)="menu()">
-       <ion-icon slot="icon-only" name="menu"></ion-icon>
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Búsqueda</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+<ion-segment>
+  <ion-searchbar
+    (ionChange)="onSearch( $event )"></ion-searchbar>
+  </ion-segment>
+  <ion-segment>
+    <ion-list>
+      <ion-item *ngFor="let trail of trails">
+        {{album.title}}
+      </ion-item>
+    </ion-list>
+  </ion-segment>
 </ion-content>
+
+<!-- debounce="3500" -->
