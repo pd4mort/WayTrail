@@ -8,15 +8,42 @@
         <ion-icon slot="icon-only" name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <img slot="end" src="../../../assets/icon/icon.png">
   </ion-toolbar>
 </ion-header>
-<ion-searchbar animated
-  (ionChange)="onSearch($event)" debounce="1500"></ion-searchbar>
-<ion-content>
+<ion-searchbar (ionChange)="onSearch($event)" debounce="1500"></ion-searchbar>
+<!-- <ion-content>
 <ion-list>
   <ion-item *ngFor="let trail of trails | filter: searchText ">
     {{trail.name}}
   </ion-item>
 </ion-list>
-</ion-content>
+</ion-content> -->
 
+<ion-content>
+  <div *ngIf="searchText">
+    <ion-card *ngFor="let trail of trails | filter: searchText">
+      <img class="img2" src={{trail.imgURL}} />
+      <ion-card-header>
+        <ion-card-subtitle><br>
+          <ion-icon name="walk-outline"></ion-icon>
+          {{trail.distance}} Km
+        </ion-card-subtitle>
+        <ion-card-title>{{trail.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{trail.description}}<br>
+      </ion-card-content>
+      <ion-item class="buttons">
+        <ion-buttons slot="start">
+          <ion-button >
+            <ion-icon slot="icon-only" name="navigate-outline"></ion-icon>
+          </ion-button>
+          <ion-button (click)="addFav()">
+            <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

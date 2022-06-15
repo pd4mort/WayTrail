@@ -22,6 +22,11 @@ export class FavouritePage implements OnInit {
     this.menuOpts = this.dataService.getMenuOpts();
   }
 
+  loadFav(){
+
+    
+  }
+
   menu() {
 
     this.menuCtrol.toggle();

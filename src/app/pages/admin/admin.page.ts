@@ -3,6 +3,9 @@ import { MenuController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Componente, Trail } from 'src/app/interfaces/interfaces';
 import { DataService } from 'src/app/service/data.service';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { TransferListItem } from 'worker_threads';
 
 @Component({
   selector: 'app-admin',
@@ -12,27 +15,34 @@ import { DataService } from 'src/app/service/data.service';
 export class AdminPage implements OnInit {
 
   menuOpts: Observable<Componente[]>;
-  trails: any [] = [];
+  trails: any[] = [];
 
   constructor(
     private menuCtrol: MenuController,
-    private dataService: DataService
-    ) { }
- 
+    private dataService: DataService,
+  ) { }
+
   ngOnInit() {
     this.menuOpts = this.dataService.getMenuOpts();
-     
+
     this.dataService.getTrail()
-      .subscribe( trails => {
-       console.log(trails)
+      .subscribe(trails => {
+        console.log(trails)
         this.trails = trails;
-      } );
+
+      });
   }
 
-  menu(){
+  menu() {
 
     this.menuCtrol.toggle();
 
+  }
+
+  async addFav() {
+
+   
+    
   }
 
 }

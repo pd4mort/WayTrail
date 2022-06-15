@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'splash',
+    redirectTo: 'admin',
     pathMatch: 'full'
   },
   {
@@ -63,10 +63,7 @@ const routes: Routes = [
     path: 'maps',
     loadChildren: () => import('./pages/maps/maps.module').then( m => m.MapsPageModule)
   },
-  {
-    path: 'splash',
-    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
-  },
+    
 
 
 ];
