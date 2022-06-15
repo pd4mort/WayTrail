@@ -1,4 +1,4 @@
-import { NgModule, ViewChildren } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './shared/auth.guard';

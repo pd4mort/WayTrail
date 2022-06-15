@@ -12,7 +12,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item *ngFor="let trail of trails" >
+      <ion-label>{{trail.name}} {{trail.distance}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
 
 

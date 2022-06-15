@@ -15,14 +15,11 @@ export class FilterPipe implements PipeTransform {
 
     text = text.toLowerCase();
 
-   //return  array.filter( item => {
+   return  array.filter( item => {
     
-      //return item.title.toLowerCase()
-       // .includes( text );
+      return item.name.toLowerCase()
+        .includes( text );
       
-   // })
-   
-    
+    })
   }
- 
 }

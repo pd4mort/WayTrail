@@ -23,5 +23,10 @@
         "icon": "star",
         "name": "Favoritos",
         "redirectTo": "/favourite"
+    },
+    {
+        "icon": "log-out-outline",
+        "name": "Cerrar sesión",
+        "redirectTo": "/logout"
     }
 ]

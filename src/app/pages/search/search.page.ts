@@ -21,13 +21,13 @@ export class SearchPage implements OnInit {
     private dataService: DataService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
 
     this.menuOpts = this.dataService.getMenuOpts();
 
-    this.dataService.getTrail()
+    await this.dataService.getTrail()
       .subscribe( trails => {
-       
+       console.log(trails)
         this.trails = trails;
       } );
   }
@@ -41,7 +41,7 @@ export class SearchPage implements OnInit {
   onSearch(event){ 
 
     this.searchText = event.detail.value;
-    console.log(event)
+    
   }
 
 }
