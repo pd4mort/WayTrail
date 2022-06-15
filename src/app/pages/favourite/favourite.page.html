@@ -13,6 +13,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen>
+  <ion-card *ngFor="let trail of trails">
+    <img class="img2" src={{trail.imgURL}} />
+    <ion-card-header>
+      <ion-card-subtitle><br><ion-icon name="walk-outline"></ion-icon>
+        {{trail.distance}} Km</ion-card-subtitle>
+      <ion-card-title>{{trail.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{trail.description}}<br>
+      <ion-buttons slot="start">
+        <ion-button >
+          <ion-icon slot="icon-only" name="navigate-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

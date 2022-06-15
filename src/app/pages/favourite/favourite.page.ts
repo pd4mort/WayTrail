@@ -12,6 +12,7 @@ import { DataService } from 'src/app/service/data.service';
 export class FavouritePage implements OnInit {
 
   menuOpts: Observable<Componente[]>;
+  trails: any[] = [];
 
   constructor(
     private menuCtrol: MenuController,
@@ -20,17 +21,32 @@ export class FavouritePage implements OnInit {
 
   ngOnInit() {
     this.menuOpts = this.dataService.getMenuOpts();
+    this.loadFav()
   }
 
-  loadFav(){
-
-    
-  }
 
   menu() {
 
     this.menuCtrol.toggle();
 
+  }
+
+  async loadFav() {
+    const uid = (await this.dataService.getUserUid());
+   
+    const path = 'users/' + uid + '/fav';
+    console.log(path)
+
+    this.dataService.getAllTrail(path).then(firebaseResponse => {
+      firebaseResponse.subscribe(listTrailRef => {
+
+        this.trails = listTrailRef.map(trailRef => {
+          let trail = trailRef.payload.doc.data();
+          trail['id'] = trailRef.payload.doc.id;
+          return trail;
+        })
+      })
+    })
   }
 
 }

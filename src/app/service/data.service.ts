@@ -1,40 +1,51 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
-import { Componente, Trail } from "../interfaces/interfaces";
-import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
+import { Componente } from "../interfaces/interfaces";
 import { collection, getFirestore } from "firebase/firestore";
 import { collectionData } from "@angular/fire/firestore";
-import { map } from "rxjs/operators";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { AuthService } from "./auth.service";
 
 
-@Injectable({ 
+@Injectable({
     providedIn: 'root'
- })
+})
 
 export class DataService {
 
-    constructor( 
+    constructor(
         private http: HttpClient,
-        //private firestore: Firestore
-        ) { }
+        private firestore: AngularFirestore,
+        private auth: AuthService,
+    ) { }
 
     getMenuOpts() {
-       
+
         return this.http.get<Componente[]>('/assets/data/menu.json')
-        
-    }
-    
-    getTrail() {
 
-        const routesCollection = collection(getFirestore(), 'routes');
-        console.log(routesCollection.id)
-        return collectionData(routesCollection)
-        
     }
 
+    async getAllTrail(collection){
+        return await this.firestore.collection(collection).snapshotChanges();
+    }
 
-    
+    async getTrailId(collection, id) {
+
+        return await this.firestore.collection(collection).doc(id).get();
+        
+
+    }
+
+    async getUserUid() {
+
+       return (await this.auth.afAuth.currentUser).uid;
+
+    }
+
+    async create(collection, data) {
+        return await this.firestore.collection(collection).add(data)
+    }
+
 }
 /*
 api.geonames.org/postalCodeSearchJSON?country=ES

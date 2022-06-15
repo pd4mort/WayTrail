@@ -17,9 +17,12 @@ export class FilterPipe implements PipeTransform {
 
    return  array.filter( item => {
     
-      return item.name.toLowerCase()
+      return item.payload.doc.data().name.toLowerCase()
         .includes( text );
       
     })
+   
+    
   }
+ 
 }

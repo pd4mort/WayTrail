@@ -39,18 +39,18 @@ const routes: Routes = [
     path: 'maps',
     loadChildren: () => import('./pages/maps/maps.module').then( m => m.MapsPageModule)
   },
-  {
+  /*{
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-  },
+  },*/
   {
     path: 'search',
     loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
   },
-  {
+  /*{
     path: 'history',
     loadChildren: () => import('./pages/history/history.module').then( m => m.HistoryPageModule)
-  },
+  },*/
   {
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)

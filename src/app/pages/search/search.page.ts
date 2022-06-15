@@ -25,9 +25,8 @@ export class SearchPage implements OnInit {
 
     this.menuOpts = this.dataService.getMenuOpts();
 
-    await this.dataService.getTrail()
+     (await this.dataService.getAllTrail('routes'))
       .subscribe( trails => {
-       console.log(trails)
         this.trails = trails;
       } );
   }
