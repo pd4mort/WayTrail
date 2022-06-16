@@ -28,6 +28,8 @@ export class SearchPage implements OnInit {
      (await this.dataService.getAllTrail('routes'))
       .subscribe( trails => {
         this.trails = trails;
+        
+        
       } );
   }
 
@@ -41,6 +43,25 @@ export class SearchPage implements OnInit {
 
     this.searchText = event.detail.value;
     
+  }
+
+  async addFav(trailID) {
+
+    const uid = (await this.dataService.getUserUid());
+    const path = 'users/' + uid + '/fav'
+    let data; 
+    
+    await this.dataService.getTrailId('routes', trailID).then(res => {
+     res.subscribe(docRef => {
+        data = docRef.data()
+        console.log(data)
+
+        if(path + trailID){
+          this.dataService.create(path, data)
+        }
+        
+     })
+    })
   }
 
 }
