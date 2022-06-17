@@ -24,7 +24,7 @@
     <ion-item class="buttons">
       <ion-buttons slot="start">
         <ion-button >
-          <ion-icon slot="icon-only" name="navigate-outline"></ion-icon>
+          <ion-icon slot="icon-only" name="navigate-outline" (click)="getRoute()"></ion-icon>
         </ion-button>
         <ion-button (click)="addFav(trail.id)">
           <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
