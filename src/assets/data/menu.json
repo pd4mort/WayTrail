@@ -4,11 +4,7 @@
         "name": "Home",
         "redirectTo": "/admin"
     },
-    {
-        "icon": "person",
-        "name": "Perfil",
-        "redirectTo": "/profile"
-    },
+  
     {
         "icon": "search",
         "name": "Búsqueda",
@@ -30,3 +26,4 @@
         "redirectTo": "/logout"
     }
 ]
+
