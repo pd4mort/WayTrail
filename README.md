@@ -3,7 +3,7 @@
 
 #First installing dependencies 
 
-npi
+npm i
 
 ## Start app
 ionic serve --lab
