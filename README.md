@@ -1,6 +1,8 @@
 # WayTrail
 
-##First installing dependencies 
+
+#First installing dependencies 
+
 npi
 
 ## Start app
